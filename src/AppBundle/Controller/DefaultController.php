@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use \Imagine\Image\Box;
+use \Imagine\Image\Point;
 
 class DefaultController extends Controller
 {
@@ -44,7 +45,7 @@ class DefaultController extends Controller
         $item = $repository->findOneByName($item_name);
 
         // Render item
-        $module = DefaultController::preRenderModule($item_name);
+        $module = DefaultController::preRenderModule($item_name, $request);
 
         return $this->render('default/item.html.twig', [
             'item' => $item,
@@ -53,7 +54,7 @@ class DefaultController extends Controller
         ]);
     }
 
-    public function preRenderModule($name) {
+    public function preRenderModule($name, Request $request) {
 
         if($name == 'Faker') {
 
@@ -78,18 +79,42 @@ class DefaultController extends Controller
 
         }
 
-        //if (name == 'Imagine') {
-            /*
-             todo
-            $palette = new Imagine\Image\Palette\RGB();
+        if ($name == 'Imagine') {
 
-            $image = $imagine->create(new Box(400, 300), $palette->color('#000'));
+            // Draw eclipse with custom colour
+            $color = $request->query->get('color');
+            if ($color == '') {
+                $color = '#000';
+            }
+            $palette = new \Imagine\Image\Palette\RGB();
+            $imagine = new \Imagine\Gd\Imagine();
+            $image = $imagine->create(new Box(400, 300), $palette->color($color));
 
-            $image->draw()->ellipse(new Point(200, 150), new Box(300, 225), $image->palette()->color('fff'));
+            $image->draw()
+                ->ellipse(new Point(200, 150), new Box(300, 225), $image->palette()->color('fff'));
 
-            $image->save('ellipse.png');
+            $image->save('imagine/ellipse.png');
 
-             */
-        //}
+            // Blur image
+            $blurval = $request->query->get('blurval');
+
+            if ($blurval == ''){
+                $blurval = 5;
+            }
+
+            $image = $imagine->open('imagine/canadaplace.jpg');
+
+            $image->effects()
+                ->blur($blurval);
+
+            $image->save('imagine/canadaplaceb.jpg');
+
+            $returnme = (object)[
+                'color' => $color,
+                'blurval' => $blurval
+            ];
+
+            return $returnme;
+        }
     }
 }

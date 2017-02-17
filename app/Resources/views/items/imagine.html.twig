@@ -1,3 +1,16 @@
-<p>Imagine allows for image manipulation</p>
+<p>Imagine allows for image generation and manipulation</p>
 
-todo
+<form method="get">
+    Color
+    <input type="text" name="color" placeholder="{{ module.color }}" /><input type="submit" value="Go" />
+    <input type="hidden" name="name" value="Imagine">
+</form>
+<img src="imagine/ellipse.png" /><br />
+
+<form method="get">
+    <h5>Blur an image</h5>
+    <img src="imagine/canadaplace.jpg" width="600px"/><br />
+    <img src="imagine/canadaplaceb.jpg" width="600px"/><br />
+    <input type="text" name="blurval" placeholder="{{ module.blurval }}" /><input type="submit" value="Go" />
+    <input type="hidden" name="name" value="Imagine">
+</form>
