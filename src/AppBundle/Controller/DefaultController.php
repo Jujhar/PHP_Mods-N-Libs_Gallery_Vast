@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use \Imagine\Image\Box;
 use \Imagine\Image\Point;
+use \Monolog\Logger;
+use \Monolog\Handler\StreamHandler;
 
 class DefaultController extends Controller
 {
@@ -57,7 +59,6 @@ class DefaultController extends Controller
     public function preRenderModule($name, Request $request) {
 
         if($name == 'Faker') {
-
 
             $faker = \Faker\Factory::create();
 
@@ -112,6 +113,37 @@ class DefaultController extends Controller
             $returnme = (object)[
                 'color' => $color,
                 'blurval' => $blurval
+            ];
+
+            return $returnme;
+        }
+
+        elseif ($name = "Monolog") {
+            // create a log channel
+            $log = new Logger('name');
+            $log->pushHandler(new StreamHandler('monolog/log.log', Logger::WARNING));
+
+            // get ip address
+            if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                $ip = $_SERVER['HTTP_CLIENT_IP'];
+            } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            } else {
+                $ip = $_SERVER['REMOTE_ADDR'];
+            }
+
+            // add records to the log
+            $log->alert('Opened monolog', array('info' => $ip, 'info2' => $_SERVER['HTTP_USER_AGENT']));
+            $log->debug('Testing debug');
+            $log->warning('Sample Warning. Please do not create too many false alarms');
+            $log->error('Testing (false alarm)');
+            $log->emergency('Testing Emergency (false alarm)');
+
+            // get log contents
+            $log_contents = file_get_contents('monolog/log.log');
+
+            $returnme = (object)[
+                'log' => $log_contents
             ];
 
             return $returnme;
