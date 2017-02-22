@@ -80,7 +80,7 @@ class DefaultController extends Controller
 
         }
 
-        if ($name == 'Imagine') {
+        elseif ($name == 'Imagine') {
 
             // Draw eclipse with custom colour
             $color = $request->query->get('color');
@@ -123,6 +123,10 @@ class DefaultController extends Controller
             $log = new Logger('name');
             $log->pushHandler(new StreamHandler('monolog/log.log', Logger::WARNING));
 
+            // todo
+            // add check to see size of file if exceeds a
+            // certain size erase file and start fresh
+
             // get ip address
             if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
                 $ip = $_SERVER['HTTP_CLIENT_IP'];
@@ -148,5 +152,6 @@ class DefaultController extends Controller
 
             return $returnme;
         }
+
     }
 }

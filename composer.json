@@ -24,6 +24,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "imagine/imagine": "^0.6.3",
         "fzaninotto/faker": "*",
+        "opauth/opauth": ">=0.2.0",
         "monolog/monolog": "1.22"
     },
     "require-dev": {

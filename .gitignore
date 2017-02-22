@@ -15,3 +15,4 @@
 /vendor/
 /web/bundles/
 /.idea/
+/web/Opauth/example/opauth.conf.php
