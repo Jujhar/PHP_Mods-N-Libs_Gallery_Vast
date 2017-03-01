@@ -56,6 +56,27 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/random")
+ *     Returns random page
+     */
+    public function randomAction(Request $request)
+    {
+        // Todo
+        $item_name = 'Faker';
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Item');
+        $item = $repository->findOneByName($item_name);
+
+        // Render item
+        $module = DefaultController::preRenderModule($item_name, $request);
+
+        return $this->render('default/item.html.twig', [
+            'item' => $item,
+            'view' => 'items/' . mb_strtolower($item->name) . '.html.twig',
+            'module' => $module
+        ]);
+    }
+
     public function preRenderModule($name, Request $request) {
 
         if($name == 'Faker') {

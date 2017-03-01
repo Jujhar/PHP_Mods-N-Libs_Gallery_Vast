@@ -3,7 +3,12 @@
 In progress
 
 ## Installation
+- Make new MySQL database under the name mods-n-libs
+- In project directory run 'composer install' and enter database details and pleas skip mailing info
 (incomplete)
+
+## Running
+ 'php bin/console server:run' and browse to 'http://localhost:8000/'
 
 ### Opauth library setup
 If using Opauth for social login enter api and keys enter in a new file called:
