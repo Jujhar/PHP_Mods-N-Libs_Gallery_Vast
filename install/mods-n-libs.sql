@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2017 at 12:09 AM
+-- Generation Time: Mar 06, 2017 at 03:17 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.17
 
@@ -29,16 +29,20 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `item` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `url` varchar(100) NOT NULL
+  `url` varchar(100) NOT NULL,
+  `active` tinyint(4) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`id`, `name`, `url`) VALUES
-(1, 'Imagine', 'https://github.com/avalanche123/Imagine'),
-(2, 'Faker', 'https://github.com/fzaninotto/Faker');
+INSERT INTO `item` (`id`, `name`, `url`, `active`) VALUES
+(1, 'Imagine', 'https://github.com/avalanche123/Imagine', 0),
+(2, 'Faker', 'https://github.com/fzaninotto/Faker', 0),
+(3, 'Monolog', 'https://github.com/Seldaek/monolog', 1),
+(4, 'Opauth', 'github.com/opauth/opauth', 1),
+(5, 'Geocoder', 'https://github.com/geocoder-php/Geocoder', 1);
 
 --
 -- Indexes for dumped tables

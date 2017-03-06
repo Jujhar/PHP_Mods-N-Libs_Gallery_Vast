@@ -25,7 +25,8 @@
         "imagine/imagine": "^0.6.3",
         "fzaninotto/faker": "*",
         "opauth/opauth": ">=0.2.0",
-        "monolog/monolog": "1.22"
+        "monolog/monolog": "1.22",
+        "willdurand/geocoder": "^3.3"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

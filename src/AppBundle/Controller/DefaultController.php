@@ -9,6 +9,9 @@ use \Imagine\Image\Box;
 use \Imagine\Image\Point;
 use \Monolog\Logger;
 use \Monolog\Handler\StreamHandler;
+use \Ivory\HttpAdapter\CurlHttpAdapter;
+use \Geocoder;
+use \Geocoder\HttpAdapter;
 
 class DefaultController extends Controller
 {
@@ -139,7 +142,7 @@ class DefaultController extends Controller
             return $returnme;
         }
 
-        elseif ($name = "Monolog") {
+        elseif ($name == "Monolog") {
             // create a log channel
             $log = new Logger('name');
             $log->pushHandler(new StreamHandler('monolog/log.log', Logger::WARNING));
@@ -169,6 +172,26 @@ class DefaultController extends Controller
 
             $returnme = (object)[
                 'log' => $log_contents
+            ];
+
+            return $returnme;
+        }
+
+        elseif ($name == "Geocoder") {
+            // Todo
+            /*
+            $lookfor = 'Laan van Meerdervoort, Den Haag, Nederland';
+
+            $adapter  = new \Geocoder\HttpAdapter\CurlHttpAdapter();
+            $geocoder = new \Geocoder\Geocoder();
+            $geocoder->registerProvider(new \Geocoder\Provider\GoogleMapsProvider($adapter));
+
+            $result = $geocoder->geocode($lookfor);
+            */
+
+
+            $returnme = (object)[
+                'location' => ''
             ];
 
             return $returnme;
