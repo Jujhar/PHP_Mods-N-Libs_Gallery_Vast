@@ -178,20 +178,41 @@ class DefaultController extends Controller
         }
 
         elseif ($name == "Geocoder") {
-            // Todo
-            /*
-            $lookfor = 'Laan van Meerdervoort, Den Haag, Nederland';
 
-            $adapter  = new \Geocoder\HttpAdapter\CurlHttpAdapter();
-            $geocoder = new \Geocoder\Geocoder();
-            $geocoder->registerProvider(new \Geocoder\Provider\GoogleMapsProvider($adapter));
+            // Since localhost is not going to work for dev 
+            $ip = $_SERVER['REMOTE_ADDR'];
+            if ($ip == "127.0.0.1") {
+                $ip = "192.206.151.131";
+            }
 
-            $result = $geocoder->geocode($lookfor);
-            */
-
+            $geocoder = new \Geocoder\ProviderAggregator();
+            $adapter  = new \Ivory\HttpAdapter\CurlHttpAdapter();
+            $chain = new \Geocoder\Provider\Chain([
+                new \Geocoder\Provider\FreeGeoIp($adapter),
+                new \Geocoder\Provider\HostIp($adapter),
+                new \Geocoder\Provider\GoogleMaps($adapter, 'fr_FR', 'France', true),
+            ]);
+            $geocode = '';
+            $geocoder->registerProvider($chain);
+            try {
+                $geocode = $geocoder->geocode($ip);
+                $timezone = $geocode->first()->getTimezone();
+                $longitude = $geocode->first()->getLongitude();
+                $latitude = $geocode->first()->getLatitude();
+                $city = $geocode->first()->getLocality(); 
+                $country = $geocode->first()->getCountry(); //will return the county;
+            } 
+            
+            catch (Exception $e) {
+                //echo $e->getMessage();
+            }
 
             $returnme = (object)[
-                'location' => ''
+                'ip' => $ip,
+                'timezone' => $timezone,
+                'cord' => ($longitude + ", " + $latitude),
+                'city' => $city,
+                'country' => $country
             ];
 
             return $returnme;
