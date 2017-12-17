@@ -1,21 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}PHP Mods N Libs{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
-        <!-- Material UI -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!-- Material UI -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    <link rel="stylesheet" href="heart.css">
+</head>
+<body>
+
+<!--nav-->
+<div style="position: absolute; right:160px;top:60px;
+color: #526ea4;">
+    <ul id="nav-items">
+        <li>
+            <a href="#">Categories</a>
+        </li>
+
+        <li><a href="/all">
+                All </a>
+        </li>
+
+        <li><a href="/random">
+                Random </a>
+        </li>
+
+        <li>
+            <a target="_blank"
+               href="https://github.com/Jujhar/PHP_Mods-N-Libs_Gallery_Vast">
+                Fork
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end/nav-->
+
+<a href="/">
+    <div style="text-align: center;padding-top: 24px;">
+        <h1 style="margin-bottom: 0px;">PHP</h1>
+
+        <h3 style="margin-top: 0px;">Mods N Libs</h3>
+    </div>
+</a>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>
 
 

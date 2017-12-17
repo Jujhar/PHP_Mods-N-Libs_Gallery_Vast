@@ -1,0 +1,136 @@
+body {
+    font: 18px/1.5 sans-serif;
+    background-color: #7496c8;
+}
+
+h1, h2 {
+    line-height: 1.2;
+    margin: 0 0 .5em;
+}
+
+h1 {
+    font-size: 36px;
+    color: #002665;
+    font-weight: 400;
+}
+
+h2 {
+    font-size: 21px;
+    margin-bottom: 1em;
+}
+
+h3 {
+    color: #002665;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+p {
+    margin: 0 0 1em 0;
+}
+
+a {
+    color: #ff1a1a;
+    text-decoration: none;
+    border-bottom: 0px solid black;
+}
+
+a:hover {
+    text-decoration: none;
+    border-bottom: 0px solid black;
+    cursor: pointer;
+    cursor: hand;
+}
+
+code {
+    max-width: 100px;
+    padding: 2px 6px;
+    word-wrap: break-word;
+}
+
+#wrapper {
+    background: #FFF;
+    margin: 1em auto;
+    width: 95%;
+    min-height: 500px;
+}
+
+#container {
+    padding: 2em;
+    background-color: #dcdcdf;
+    height: 100%;
+    min-height: 500px;
+}
+
+#nav-items li {
+    padding-left: 25px;
+    display: inline-block;
+    font-size: 1.3em;
+    font-family: 'DIN alternative', 'DIN', SansSerif;
+    font-weight: bold;
+}
+
+#nav-items li a {
+    color: inherit;
+    text-decoration: none;
+    font-family: 'DIN alternative', 'DIN', SansSerif;
+    font-weight: bold;
+}
+
+#welcome, #status {
+    margin-bottom: 2em;
+}
+
+#welcome h1 span {
+    display: block;
+    font-size: 75%;
+}
+
+#icon-status, #icon-book {
+    float: left;
+    height: 64px;
+    margin-right: 1em;
+    margin-top: -4px;
+    width: 64px;
+}
+
+#icon-book {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    #wrapper {
+        width: 80%;
+        margin: 2em auto;
+    }
+
+    #icon-book {
+        display: inline-block;
+    }
+
+    #status a, #next a {
+        display: block;
+    }
+
+    @-webkit-keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    .sf-toolbar {
+        opacity: 0;
+        -webkit-animation: fade-in 1s .2s forwards;
+        animation: fade-in 1s .2s forwards;
+    }
+}
