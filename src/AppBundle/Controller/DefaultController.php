@@ -20,9 +20,14 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        // Render item
+        $module = DefaultController::preRenderModule('Imagine', $request);
+
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'view' => 'items/' . mb_strtolower('imagine') . '.html.twig',
+            'module' => $module,
+            'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
         ]);
     }
 
@@ -61,7 +66,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/random")
- *     Returns random page
+     *     Returns random page
      */
     public function randomAction(Request $request)
     {
@@ -80,9 +85,10 @@ class DefaultController extends Controller
         ]);
     }
 
-    public function preRenderModule($name, Request $request) {
+    public function preRenderModule($name, Request $request)
+    {
 
-        if($name == 'Faker') {
+        if ($name == 'Faker') {
 
             $faker = \Faker\Factory::create();
 
@@ -102,9 +108,7 @@ class DefaultController extends Controller
 
             return $returnme;
 
-        }
-
-        elseif ($name == 'Imagine') {
+        } elseif ($name == 'Imagine') {
 
             // Draw eclipse with custom colour
             $color = $request->query->get('color');
@@ -123,7 +127,7 @@ class DefaultController extends Controller
             // Blur image
             $blurval = $request->query->get('blurval');
 
-            if ($blurval == ''){
+            if ($blurval == '') {
                 $blurval = 5;
             }
 
@@ -140,9 +144,7 @@ class DefaultController extends Controller
             ];
 
             return $returnme;
-        }
-
-        elseif ($name == "Monolog") {
+        } elseif ($name == "Monolog") {
             // create a log channel
             $log = new Logger('name');
             $log->pushHandler(new StreamHandler('monolog/log.log', Logger::WARNING));
@@ -175,9 +177,7 @@ class DefaultController extends Controller
             ];
 
             return $returnme;
-        }
-
-        elseif ($name == "Geocoder") {
+        } elseif ($name == "Geocoder") {
 
             // Since localhost is not going to work for dev 
             $ip = $_SERVER['REMOTE_ADDR'];
@@ -186,7 +186,7 @@ class DefaultController extends Controller
             }
 
             $geocoder = new \Geocoder\ProviderAggregator();
-            $adapter  = new \Ivory\HttpAdapter\CurlHttpAdapter();
+            $adapter = new \Ivory\HttpAdapter\CurlHttpAdapter();
             $chain = new \Geocoder\Provider\Chain([
                 new \Geocoder\Provider\FreeGeoIp($adapter),
                 new \Geocoder\Provider\HostIp($adapter),
@@ -199,11 +199,9 @@ class DefaultController extends Controller
                 $timezone = $geocode->first()->getTimezone();
                 $longitude = $geocode->first()->getLongitude();
                 $latitude = $geocode->first()->getLatitude();
-                $city = $geocode->first()->getLocality(); 
+                $city = $geocode->first()->getLocality();
                 $country = $geocode->first()->getCountry(); //will return the county;
-            } 
-            
-            catch (Exception $e) {
+            } catch (Exception $e) {
                 //echo $e->getMessage();
             }
 

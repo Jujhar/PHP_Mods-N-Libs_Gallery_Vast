@@ -1,16 +1,21 @@
 # PHP Mods N Libs Gallery Vast
 
-In progress
+In Beta
+
+## Features
+Currently includes [Imagine](https://github.com/avalanche123/Imagine "Title"), [monolog](https://github.com/Seldaek/monolog "Title"), [Geocoder](https://github.com/geocoder-php/Geocoder "Title"), [Opauth](https://github.com/opauth/opauth "Title"), and [Faker](https://github.com/fzaninotto/Faker "Title")
 
 ## Installation
-- Make new MySQL database under the name mods-n-libs
-- In project directory run 'composer install' and enter database details and pleas skip mailing info
-(incomplete)
+- Make new MySQL database using the install/mods-n-libs.sql file using the database name mods-n-libs
+- In project directory run 'composer install' and enter database details and skip mailing info
 
 ## Running
- 'php bin/console server:run' and browse to 'http://localhost:8000/'
 
-### Opauth library setup
+    $ php bin/console server:run
+
+Run the above command and then browse to 'http://localhost:8000/'
+
+### Opauth library setup (optional)
 If using Opauth for social login enter api and keys enter in a new file called:
 /web/Opauth/example/opauth.conf.php
 

@@ -4,15 +4,133 @@
     <div id="wrapper">
         <div id="container">
 
-            <div id="next">
-                <h2>Top Rated</h2>
-                <p></p>
-            </div>
+            <!-- tabs thanks to wallaceerick (codepen) -->
+            <ul class="tabs" role="tablist">
+                <li>
+                    <input type="radio" name="tabs" id="tab1" checked/>
+                    <label for="tab1"
+                           role="tab"
+                           aria-selected="true"
+                           aria-controls="panel1"
+                           tabindex="0">Imagine</label>
 
-            <div id="next">
-                <h4>Featured</h4>
-                
-            </div>
+                    <div id="tab-content1"
+                         class="tab-content"
+                         role="tabpanel"
+                         aria-labelledby="description"
+                         aria-hidden="false">
+
+                        <div id="next">
+                            <h4>{% include view %}</h4>
+                        </div>
+
+                    </div>
+                </li>
+
+
+                <li>
+                    <input type="radio" name="tabs" id="tab3" checked/>
+                    <label for="tab3"
+                           role="tab"
+                           aria-selected="true"
+                           aria-controls="panel3"
+                           tabindex="0">Faker</label>
+
+                    <div id="tab-content3"
+                         class="tab-content"
+                         role="tabpanel"
+                         aria-labelledby="description"
+                         aria-hidden="false">
+
+                        <div id="next">
+                            <h4>Coming soon</h4>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <input type="radio" name="tabs" id="tab4" checked/>
+                    <label for="tab4"
+                           role="tab"
+                           aria-selected="true"
+                           aria-controls="panel4"
+                           tabindex="0">Geocoder</label>
+
+                    <div id="tab-content4"
+                         class="tab-content"
+                         role="tabpanel"
+                         aria-labelledby="description"
+                         aria-hidden="false">
+
+                        <div id="next">
+                            <h4>Coming soon</h4>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <input type="radio" name="tabs" id="tab5" checked/>
+                    <label for="tab5"
+                           role="tab"
+                           aria-selected="true"
+                           aria-controls="panel5"
+                           tabindex="0">Monolog</label>
+
+                    <div id="tab-content5"
+                         class="tab-content"
+                         role="tabpanel"
+                         aria-labelledby="description"
+                         aria-hidden="false">
+
+                        <div id="next">
+                            <h4>Coming soon</h4>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <input type="radio" name="tabs" id="tab6" checked/>
+                    <label for="tab1"
+                           role="tab"
+                           aria-selected="true"
+                           aria-controls="panel6"
+                           tabindex="0">Opauth</label>
+
+                    <div id="tab-content6"
+                         class="tab-content"
+                         role="tabpanel"
+                         aria-labelledby="description"
+                         aria-hidden="false">
+
+                        <div id="next">
+                            <h4>Coming soon</h4>
+                        </div>
+
+                    </div>
+                </li>
+
+
+                <li>
+                    <input type="radio" name="tabs" id="tab30"/>
+                    <label for="tab30"
+                           role="tab"
+                           aria-selected="false"
+                           aria-controls="panel30"
+                           tabindex="0" style="background-color: #E0E0E0;color: black;">More</label>
+
+                    <div id="tab-content30"
+                         class="tab-content"
+                         role="tabpanel"
+                         aria-labelledby="specification"
+                         aria-hidden="true">
+                        Not yet available.
+                    </div>
+                </li>
+            </ul>
+
 
         </div>
     </div>
