@@ -1,6 +1,6 @@
 # PHP Mods N Libs Gallery Vast
 
-In Beta
+In Alpha
 
 ## Features
 Currently includes [Imagine](https://github.com/avalanche123/Imagine "Title"), [monolog](https://github.com/Seldaek/monolog "Title"), [Geocoder](https://github.com/geocoder-php/Geocoder "Title"), [Opauth](https://github.com/opauth/opauth "Title"), and [Faker](https://github.com/fzaninotto/Faker "Title")
@@ -12,8 +12,6 @@ Currently includes [Imagine](https://github.com/avalanche123/Imagine "Title"), [
 ## Running
 
     $ php bin/console server:run
-
-Run the above command and then browse to 'http://localhost:8000/'
 
 ### Opauth library setup (optional)
 If using Opauth for social login enter api and keys enter in a new file called:
