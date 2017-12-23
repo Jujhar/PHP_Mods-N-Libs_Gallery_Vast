@@ -19,7 +19,31 @@
 <body>
 
 <!--nav-->
-<div style="position: absolute; right:160px;top:60px;
+<div class="mobileOnly"
+     style="position: absolute; right:50px;top:15px;
+      color: #526ea4;">
+    <!-- Right aligned menu below button -->
+    <button id="demo-menu-lower-right"
+            class="mdl-button mdl-js-button mdl-button--icon"
+            style="width: 100px;
+            height: 100px;">
+        <i class="material-icons"
+        style="font-size: 1.4em;">menu</i>
+    </button>
+
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+        for="demo-menu-lower-right">
+        <li class="mdl-menu__item"><a href="/categories">Categories</a></li>
+        <li class="mdl-menu__item"><a href="/all">All</a></li>
+        <li class="mdl-menu__item"><a href="/random">Random<a/></li>
+        <li class="mdl-menu__item">
+            <a href="https://github.com/Jujhar/PHP_Mods-N-Libs_Gallery_Vast">Fork</a>
+        </li>
+    </ul>
+</div>
+
+<div class="pcOnly"
+     style="position: absolute; right:160px;top:60px;
 color: #526ea4;">
     <ul id="nav-items">
         <li>

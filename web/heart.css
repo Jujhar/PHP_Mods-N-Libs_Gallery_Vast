@@ -3,6 +3,18 @@ body {
     background-color: #7496c8;
 }
 
+.tabs {
+    width: 75%;
+}
+
+.pcOnly {
+    display: none;
+}
+
+.mobileOnly {
+    display: inherit;
+}
+
 h1, h2 {
     line-height: 1.2;
     margin: 0 0 .5em;
@@ -99,6 +111,11 @@ code {
 }
 
 @media (min-width: 768px) {
+
+    .tabs {
+        width: 95%;
+    }
+
     #wrapper {
         width: 80%;
         margin: 2em auto;
@@ -132,5 +149,15 @@ code {
         opacity: 0;
         -webkit-animation: fade-in 1s .2s forwards;
         animation: fade-in 1s .2s forwards;
+    }
+}
+
+@media (min-width: 1198px) {
+    .pcOnly {
+        display: inherit;
+    }
+
+    .mobileOnly {
+        display: none;
     }
 }

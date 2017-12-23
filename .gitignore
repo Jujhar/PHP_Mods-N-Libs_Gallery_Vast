@@ -17,3 +17,4 @@
 /web/bundles/
 /.idea/
 /web/Opauth/example/opauth.conf.php
+/web/monolog/log.log
