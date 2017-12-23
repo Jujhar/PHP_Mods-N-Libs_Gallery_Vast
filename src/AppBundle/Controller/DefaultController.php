@@ -41,13 +41,21 @@ class DefaultController extends Controller
             'view3' => 'items/' . mb_strtolower($mod3) . '.html.twig',
             'view4' => 'items/' . mb_strtolower($mod4) . '.html.twig',
             'view5' => 'items/' . mb_strtolower($mod5) . '.html.twig',
-            'module' => $module,
+            'imagine' => $module,
             'faker' => $module2,
             'geocoder' => $module3,
             'monolog' => $module4,
             'opauth' => $module5,
             'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
         ]);
+    }
+
+    /**
+     * @Route("/categories", name="categories")
+     */
+    public function categoriesAction(Request $request)
+    {
+        return $this->render('default/categories.html.twig');
     }
 
     /**
@@ -79,7 +87,7 @@ class DefaultController extends Controller
         return $this->render('default/item.html.twig', [
             'item' => $item,
             'view' => 'items/' . mb_strtolower($item->name) . '.html.twig',
-            'module' => $module
+            mb_strtolower($item->name) => $module
         ]);
     }
 
@@ -100,7 +108,7 @@ class DefaultController extends Controller
         return $this->render('default/item.html.twig', [
             'item' => $item,
             'view' => 'items/' . mb_strtolower($item->name) . '.html.twig',
-            'module' => $module
+            mb_strtolower($item->name) => $module
         ]);
     }
 
@@ -132,7 +140,7 @@ class DefaultController extends Controller
             // Draw eclipse with custom colour
             $color = $request->query->get('color');
             if ($color == '') {
-                $color = '#000';
+                $color = '#322';
             }
             $palette = new \Imagine\Image\Palette\RGB();
             $imagine = new \Imagine\Gd\Imagine();

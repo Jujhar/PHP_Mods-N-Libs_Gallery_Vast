@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                Data rendering
+                &nbsp;&nbsp;<a href="item?name=Faker">Faker</a>
+                <br/>Debugging and analytics
+                &nbsp;&nbsp;<a href="item?name=Monolog">Monolog</a>
+                <br/>Image manipulation
+                &nbsp;&nbsp;<a href="item?name=Imagine">Imagine</a>
+                <br/>Location and maps
+                &nbsp;&nbsp;<a href="item?name=Geocoder">Geocoder</a>
+                <br/>Social
+                &nbsp;&nbsp;<a href="item?name=Opauth">Opauth</a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        #welcome a {
+            font-size: 0.7em;
+            display: block;
+        }
+    </style>
+{% endblock %}
