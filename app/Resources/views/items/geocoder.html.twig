@@ -1,11 +1,11 @@
 <p>Generates user location data</p><br />
 
-<b>Timezone:</b> {{ module.timezone }}<br />
-<b>Coordinates:</b> {{ module.cord }}<br />
-<b>City:</b> {{ module.city }}<br />
-{% if module.country == "Canada" %}
+<b>Timezone:</b> {{ geocoder.timezone }}<br />
+<b>Coordinates:</b> {{ geocoder.cord }}<br />
+<b>City:</b> {{ geocoder.city }}<br />
+{% if geocoder.country == "Canada" %}
     <b>Country:</b> <img src='https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Flag_of_Canada.svg/80px-Flag_of_Canada.svg.png' />
 {% else %}
-    <b>Country:</b> {{ module.country }}<br />
+    <b>Country:</b> {{ geocoder.country }}<br />
 {% endif %}
 

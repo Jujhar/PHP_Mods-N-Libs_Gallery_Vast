@@ -20,13 +20,32 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // Render item
-        $module = DefaultController::preRenderModule('Imagine', $request);
+        // Which modules to display on front page
+        $mod1 = 'Imagine';
+        $mod2 = 'Faker';
+        $mod3 = 'Geocoder';
+        $mod4 = 'Monolog';
+        $mod5 = 'Opauth';
+
+        // Render items
+        $module = DefaultController::preRenderModule($mod1, $request);
+        $module2 = DefaultController::preRenderModule($mod2, $request);
+        $module3 = DefaultController::preRenderModule($mod3, $request);
+        $module4 = DefaultController::preRenderModule($mod4, $request);
+        $module5 = DefaultController::preRenderModule($mod5, $request);
 
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
-            'view' => 'items/' . mb_strtolower('imagine') . '.html.twig',
+            'view' => 'items/' . mb_strtolower($mod1) . '.html.twig',
+            'view2' => 'items/' . mb_strtolower($mod2) . '.html.twig',
+            'view3' => 'items/' . mb_strtolower($mod3) . '.html.twig',
+            'view4' => 'items/' . mb_strtolower($mod4) . '.html.twig',
+            'view5' => 'items/' . mb_strtolower($mod5) . '.html.twig',
             'module' => $module,
+            'faker' => $module2,
+            'geocoder' => $module3,
+            'monolog' => $module4,
+            'opauth' => $module5,
             'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
         ]);
     }
@@ -179,7 +198,7 @@ class DefaultController extends Controller
             return $returnme;
         } elseif ($name == "Geocoder") {
 
-            // Since localhost is not going to work for dev 
+            // Since localhost is not going to work for dev
             $ip = $_SERVER['REMOTE_ADDR'];
             if ($ip == "127.0.0.1") {
                 $ip = "192.206.151.131";
